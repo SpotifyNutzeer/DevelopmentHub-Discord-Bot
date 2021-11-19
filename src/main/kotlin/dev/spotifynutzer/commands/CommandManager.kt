@@ -38,4 +38,10 @@ class CommandManager {
 
     }
 
+    fun addCommand(vararg command: AbstractCommand) {
+
+        if (!commands.containsAll(command.toList())) commands.addAll(command)
+
+    }
+
 }

@@ -14,7 +14,6 @@ class BotBuilder(private val token: String) {
     /**     All variables   **/
     private lateinit var jdaBuilder: JDABuilder
     private lateinit var jda: JDA
-    private lateinit var user: User
 
     @Throws(LoginException::class)
     fun build() {
@@ -34,10 +33,8 @@ class BotBuilder(private val token: String) {
         jdaBuilder.setActivity(Activity.playing("nix"))
 
         jda = jdaBuilder.build()
-        user = jda.selfUser
     }
 
     fun getJDA(): JDA = jda
-    fun getUser(): User = user
 
 }

@@ -22,6 +22,16 @@ class JoinListener : ListenerAdapter() {
             event.member.user.getAvatarUrl(),
             event.guild
         ).createMessage().sendTextChannel(channel)
+
+        EmbedModel(
+            "**Herzlich Willkommen**",
+            event.member,
+            null,
+            Color.GREEN,
+            "Bitte lese dir die Regeln in ${event.guild.getTextChannelById(758720321678868502L)?.asMention} durch.",
+            event.member.user.getAvatarUrl(),
+            event.guild
+        ).createMessage().sendPrivate(event.member.user.openPrivateChannel().complete())
     }
 
 }

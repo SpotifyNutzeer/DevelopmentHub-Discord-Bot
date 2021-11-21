@@ -2,6 +2,7 @@ package dev.spotifynutzer.bot
 
 import dev.spotifynutzer.listener.JoinListener
 import dev.spotifynutzer.listener.ReactionAddEvent
+import dev.spotifynutzer.listener.ReactionRemoveEvent
 import dev.spotifynutzer.listener.SlashCommandListener
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
@@ -28,7 +29,8 @@ class BotBuilder(private val token: String) {
             .addEventListeners(
                 SlashCommandListener(),
                 JoinListener(),
-                ReactionAddEvent()
+                ReactionAddEvent(),
+                ReactionRemoveEvent()
             )
 
 

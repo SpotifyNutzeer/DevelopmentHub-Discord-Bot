@@ -1,7 +1,9 @@
 package dev.spotifynutzer.listener
 
+import dev.spotifynutzer.models.EmbedModel
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import java.awt.Color
 
 class ReactionAddEvent : ListenerAdapter() {
 
@@ -15,6 +17,18 @@ class ReactionAddEvent : ListenerAdapter() {
 
         if (role != null) {
             event.guild.addRoleToMember(event.member!!, role)
+
+            event.user?.openPrivateChannel()?.complete()?.let {
+                EmbedModel(
+                    "**Herzlich Willkommen**",
+                    event.member,
+                    null,
+                    Color.GREEN,
+                    "Bitte lese dir die Regeln in ${event.guild.getTextChannelById(758720321678868502L)?.asMention} durch.",
+                    event.user?.getAvatarUrl(),
+                    event.guild
+                ).createMessage().sendPrivate(it)
+            }
         }
     }
 }
